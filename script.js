@@ -37,7 +37,12 @@ function calculate() {
         const operation = display.textContent;
         
         // Calculer le résultat de l'opération
-        const result = eval(operation);
+        let result = eval(operation);
+        
+        // Appliquer la limitation à 4 décimales uniquement si c'est un nombre flottant
+        if (typeof result === 'number' && !Number.isInteger(result)) {
+            result = result.toFixed(4);  // Formater le résultat avec 4 décimales
+        }
         
         // Mettre à jour l'affichage avec le résultat
         display.textContent = result;
@@ -74,6 +79,12 @@ function updateHistory() {
     history.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = `${index + 1}) ${item.operation} = ${item.result}`;
+        
+        // Ajouter un gestionnaire de clic pour chaque élément d'historique
+        li.addEventListener('click', () => {
+            display.textContent = item.operation;  // Afficher l'opération dans la zone d'affichage
+        });
+        
         historyList.appendChild(li);
     });
 }
