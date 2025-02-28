@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATRICE SIMPLE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Icône de la page -->
+        <link rel="icon" href="calculatrice (1).png" type="image/png">
+    
+    
+</head>
+
+<body>
+    <div class="calculator">
+        <!-- Icône pour ouvrir/fermer l'historique -->
+        <div class="history-icon" onclick="toggleHistory()">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9" stroke="#333" stroke-width="2"/>
+                <path d="M12 7V12L16 14" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 12A9 9 0 0 1 12 3" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                <path d="M3 3L6 6" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              
+        </div>
+        <!-- Affichage de la calculatrice -->
+        <div class="display" id="display">0</div>
+        <!-- Boutons de la calculatrice -->
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">⌫</button>
+            <button onclick="appendToDisplay('(')">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendToDisplay('/')">÷</button>
+            
+        </div>
+    </div>
+    <!-- Barre d'historique -->
+    <div class="history-sidebar" id="history-sidebar">
+        <h3>Historique</h3>
+        <ul id="history-list"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

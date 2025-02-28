@@ -1,0 +1,219 @@
+/* Arrière-plan avec dégradé animé */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Effet de verre dépoli pour la calculatrice */
+.calculator {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 320px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Écran d'affichage avec effet néon et animation */
+.display {
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ffcc;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
+    padding: 20px;
+    text-align: right;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.6), inset 0 0 10px rgba(0, 255, 204, 0.3);
+    border: 1px solid rgba(0, 255, 204, 0.4);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 15px rgba(0, 255, 204, 0.6), inset 0 0 10px rgba(0, 255, 204, 0.3); }
+    to { box-shadow: 0 0 25px rgba(0, 255, 204, 0.8), inset 0 0 15px rgba(0, 255, 204, 0.5); }
+}
+
+/* Boutons modernes avec effet 3D et animation */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 50%;
+}
+
+button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton égal avec une couleur différente */
+button[onclick="calculate()"] {
+    background: linear-gradient(45deg, #00ffcc, #00e6b8);
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 255, 204, 0.4);
+}
+
+button[onclick="calculate()"]:hover {
+    background: linear-gradient(45deg, #00e6b8, #00cc99);
+    box-shadow: 0 6px 12px rgba(0, 255, 204, 0.6);
+}
+
+/* Bouton pourcentage avec un style distinct */
+button[onclick="calculatePercentage()"] {
+    background: linear-gradient(45deg, #ff6b81, #ff4b61);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(255, 107, 129, 0.4);
+}
+
+button[onclick="calculatePercentage()"]:hover {
+    background: linear-gradient(45deg, #ff4b61, #ff2e47);
+    box-shadow: 0 6px 12px rgba(255, 107, 129, 0.6);
+}
+
+button[onclick="calculatePercentage()"]:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(255, 107, 129, 0.4);
+}
+
+/* Icône d'historique moderne */
+.history-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.history-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.history-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+    transition: fill 0.2s ease;
+}
+
+.history-icon:hover svg {
+    fill: #00ffcc;
+}
+
+/* Barre d'historique avec effet de verre dépoli */
+.history-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    padding: 25px;
+    z-index: 1000;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.history-sidebar.visible {
+    right: 0;
+}
+
+.history-sidebar h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+}
+
+.history-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.history-sidebar ul li {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.history-sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
